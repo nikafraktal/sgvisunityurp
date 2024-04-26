@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | My project (1)</title>
+    <title>Unity Web Player | My project (4)</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">My project (1)</div>
+        <div id="unity-build-title">My project (4)</div>
       </div>
     </div>
     <script>
@@ -52,16 +52,16 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/webgltest.loader.js";
+      var loaderUrl = buildUrl + "/webglbuildonurp.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/webgltest.data",
-        frameworkUrl: buildUrl + "/webgltest.framework.js",
-        codeUrl: buildUrl + "/webgltest.wasm",
+        dataUrl: buildUrl + "/webglbuildonurp.data.br",
+        frameworkUrl: buildUrl + "/webglbuildonurp.framework.js.br",
+        codeUrl: buildUrl + "/webglbuildonurp.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "My project (1)",
-        productVersion: "0.1",
+        productName: "My project (4)",
+        productVersion: "0.1.0",
         showBanner: unityShowBanner,
       };
 
@@ -104,51 +104,15 @@
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
-                  console.log("Inside querySelector");
                 };
-                console.log("Outside querySelector, inside UnityInstance, where onLoadUnityis");
-                onLoadUnity(unityInstance);
+
               }).catch((message) => {
                 alert(message);
               });
-        };
-          console.log("outside script.onload");
+            };
+
       document.body.appendChild(script);
 
-
-
-
-
-      var unityInstance;
-      // JavaScript function to detect if the device is mobile
-      function isMobileDevice() {
-        // Add your mobile device detection logic here
-        // For example:
-        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      }
-
-      // JavaScript function to send mobile device detection result to Unity
-      function sendMobileDetectionResultToUnity(isMobile, unityInstance) {
-        if (unityInstance) {
-        if (isMobile) {
-          unityInstance.SendMessage('PlayerGO', 'ReceiveMobileDetectionResult', 'true');
-        } else {
-          unityInstance.SendMessage('PlayerGO', 'ReceiveMobileDetectionResult', 'false');
-        }
-        } else {
-            console.error("Unity instance is undefined.");
-        }
-      }
-      function onLoadUnity(unityInstance) {
-        console.log("Hello");
-        // console.log("Is Mobile Device:", isMobile); // Debug log statement
-        var isMobile = isMobileDevice();
-        sendMobileDetectionResultToUnity(isMobile, unityInstance);
-      }
-
-      window.onload = function() {
-        //onLoadUnity();
-      }
     </script>
   </body>
 </html>
