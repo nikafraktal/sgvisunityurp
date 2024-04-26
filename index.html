@@ -105,14 +105,43 @@
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
-
+                onLoadUnity(unityInstance);
               }).catch((message) => {
                 alert(message);
               });
             };
 
       document.body.appendChild(script);
+      var unityInstance;
+      // JavaScript function to detect if the device is mobile
+      function isMobileDevice() {
+        // Add your mobile device detection logic here
+        // For example:
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      }
 
+      // JavaScript function to send mobile device detection result to Unity
+      function sendMobileDetectionResultToUnity(isMobile, unityInstance) {
+        if (unityInstance) {
+        if (isMobile) {
+          unityInstance.SendMessage('PlayerGO', 'ReceiveMobileDetectionResult', 'true');
+        } else {
+          unityInstance.SendMessage('PlayerGO', 'ReceiveMobileDetectionResult', 'false');
+        }
+        } else {
+            console.error("Unity instance is undefined.");
+        }
+      }
+      function onLoadUnity(unityInstance) {
+        console.log("Hello");
+        // console.log("Is Mobile Device:", isMobile); // Debug log statement
+        var isMobile = isMobileDevice();
+        sendMobileDetectionResultToUnity(isMobile, unityInstance);
+      }
+
+      window.onload = function() {
+        //onLoadUnity();
+      }
     </script>
   </body>
 </html>
