@@ -104,14 +104,21 @@
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
+                  console.log("Inside querySelector");
                 };
+                console.log("Outside querySelector, inside UnityInstance, where onLoadUnityis");
                 onLoadUnity(unityInstance);
               }).catch((message) => {
                 alert(message);
               });
-            };
-
+        };
+          console.log("outside script.onload");
       document.body.appendChild(script);
+
+
+
+
+
       var unityInstance;
       // JavaScript function to detect if the device is mobile
       function isMobileDevice() {
