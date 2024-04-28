@@ -55,9 +55,9 @@
       var loaderUrl = buildUrl + "/webgltest.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/webgltest.data.gz",
-        frameworkUrl: buildUrl + "/webgltest.framework.js.gz",
-        codeUrl: buildUrl + "/webgltest.wasm.gz",
+        dataUrl: buildUrl + "/webgltest.data.unityweb",
+        frameworkUrl: buildUrl + "/webgltest.framework.js.unityweb",
+        codeUrl: buildUrl + "/webgltest.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "My project (1)",
@@ -112,6 +112,8 @@
             };
 
       document.body.appendChild(script);
+
+
 
       var unityInstance;
       // JavaScript function to detect if the device is mobile
